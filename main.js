@@ -6,12 +6,15 @@ const carritoIcon = document.querySelector('.navbar-shopping-cart');
 const aside = document.querySelector('.product-detail');
 const cardsContainer = document.querySelector('.cards-container');
 const productDescription = document.querySelector('.product-description');
-const DescriptionImage = document.querySelector('.infoProduct')
+const closeDescription= document.querySelector('.close-icon')
+
+
 
 menuEmail.addEventListener('click', toggleDesktopMenu);
 menuHamIcon.addEventListener('click', toggleMobileMenu);
 carritoIcon.addEventListener('click', toggleAside);
-DescriptionImage.addEventListener('click', toggleProductDescription);
+closeDescription.addEventListener('click', CloseDescription)
+//DescriptionImage.addEventListener('click', toggleProductDescription); no se usa por el momento
 
 function toggleDesktopMenu(){
     // declarando un nombre para saber si el carrito está cerrado
@@ -63,7 +66,7 @@ function toggleAside(){
   
 }
 
-function toggleProductDescription(){
+function OpenProductDescription(){
     // declarando un nombre para saber si el menumobile está cerrado
     const isMobileMenuClosed = mobileMenu.classList.contains('inactive');
     const isDesktopMenuClosed = menuEmail.classList.contains('inactive');
@@ -77,9 +80,12 @@ function toggleProductDescription(){
         aside.classList.add('inactive')
     }
     //una vez cerrado abre el carrito
-    productDescription.classList.toggle('inactive');
-    
-  
+    productDescription.classList.remove('inactive');
+ 
+}
+/// función para cerrar con la x
+function CloseDescription(){
+    productDescription.classList.add('inactive');
 }
 
 const productList = [];
@@ -220,6 +226,7 @@ for (product of productList){
 
     const ProductImg= document.createElement('img');
     ProductImg.setAttribute('src', product.image);
+    ProductImg.addEventListener('click',OpenProductDescription)  // escucha el clik en la imagen
 
     const ProductInfo = document.createElement('div');
     ProductInfo.classList.add('product-info');
