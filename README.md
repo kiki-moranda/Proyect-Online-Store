@@ -1,2 +1,2 @@
 # Proyect-Online-Store
-My  first proyect of an online store
+My  first project of an online store using Html, CSS and JavaScript 
